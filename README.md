@@ -37,6 +37,7 @@ ___
 ### Tech Stack
 * __Linux__
 * __python3__
+* __JavaScript__
 * __Django__
 * __Django-REST-framework__
 * __sqlite3__
