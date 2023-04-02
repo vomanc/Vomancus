@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block title %}API KEYS settings{% endblock %}
+
+{% block content %}
+<h1>API KEYS settings</h1>
+<div class="twitter-api-keys-form">
+    <hr>
+    <h2>Twitter Api Key</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>Consumer key: {{ form.consumer_key }}</p>
+        <p>Consumer secret: {{ form.consumer_secret }}</p>
+        <p>Access Token: {{ form.access_token }}</p>
+        <p>Access Token Secret: {{ form.access_token_secret }}</p>
+        <button type="submit" name="account-update">Save</button>
+    </form>
+    <hr>
+</div>
+{% endblock %}

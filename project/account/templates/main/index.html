@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% block title %}Socials{% endblock %}
+{% block content %}
+<div class="main-page-text">
+    <h1>The main thing</h1>
+    <h4>The main concern of this app is security. So don't expect to have a lot of
+        awesome functionality like other sites or apps.</h4>
+    <h5>This web application is designed to interact with other social networks.</h5>
+    <p>You can register and add your keys. At the moment, only Twitter API works.
+        The received tweets are stored in the database. There is a translator for
+        tweets. Installed sqlite3 but will have MySQL. Tested on Ubuntu. Coming soon:</p>
+    <ul>
+        <li>add Mastadon;</li>
+        <li>end-to-end encrypted messages;</li>
+        <li>search and follow on twitter.</li>
+    </ul>
+    <p>If you support the project, there will be more functionality,
+        and I will add: Telegram, Instagram, Discord and Facebook. And if there is
+        enough support, I will launch the site on the server and it will be a full-fledged site.</p>
+    <p>The installation is described in <a href="https://github.com/vomanc">Github</a>. Donations can tweet about bugs.
+        Additional info <a href="{% url 'about' %}">here</a>. And most importantly, there will never be trackers, ads,
+        and no one will follow you.</p>
+    <p>It also works its own API, you can receive data as well as via the web, the scripts will be on my github.</p>
+</div>
+{% endblock %}

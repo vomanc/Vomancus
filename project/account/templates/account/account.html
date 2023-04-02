@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+{% block title %} Account Page {% endblock %}
+
+{% block content %}
+<h1>My account</h1>
+
+{% if user.is_authenticated %}
+<div class="account-page">
+    <ul>
+        {% if account.avatar %}
+        <img class="avatar-for-account" src="{{ account.avatar.url }}" alt="avatar">
+        {% endif %}
+        {% if account.first_name != '' %}
+        <li>{{ account.first_name }} {{ account.last_name }}</li>
+        {% endif %}
+        <li>@{{ account.get_username }}</li>
+        {% if account.email != '-' %}
+        <li>Email: {{ account.email }}
+        {% if account.confirm_email is True %} ✔️ {% else %} 🚫 {% endif %}</li>
+        {% endif %}
+        {% if account.gender != '-' %}
+        <li>Gender: {{ account.gender }}</li>
+        {% endif %}
+        {% if account.twitter != '@' %}
+        <li>Twitter: {{ account.twitter }}</li>
+        {% endif %}
+        {% if account.mastodon != '@' %}
+        <li>Mastodon: {{ account.mastodon }}</li>
+        {% endif %}
+        {% if account.signal != '+' %}
+        <li>Signal: {{ account.signal }}</li>
+        {% endif %}
+        {% if account.github != '@' %}
+        <li>Github: {{ account.github }}</li>
+        {% endif %}
+        {% if account.telegram != '@' %}
+        <li>Telegram: {{ account.telegram }}</li>
+        {% endif %}
+        {% if account.date_of_birth != None %}
+        <li>Date of birth: {{ account.date_of_birth }}</li>
+        {% endif %}
+    </ul>
+</div>
+{% with user_id=request.user.id|lower %}
+{% if request.get_full_path == '/account/'|add:user_id %}
+<a href="{% url 'account-update' %}">Update account</a>
+{% endif %}
+{% endwith %}
+{% endif %}
+{% endblock %}

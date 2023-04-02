@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% block title %}Account settings{% endblock %}
+
+{% block content %}
+<h1>Account settings</h1>
+<div class="account-update">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if email_status is True %}
+            <p>Email: {{ form_account_upd.email }} Your email has been verified</p>
+            {% else %}
+            <p>Email: {{ form_account_upd.email }} Your email is not verified</p>
+        {% endif %}
+        <p>Username: {{ form_account_upd.username }}</p>
+        <p>First name: {{ form_account_upd.first_name }}</p>
+        <p>Last name: {{ form_account_upd.last_name }}</p>
+        <p>Gender: {{ form_account_upd.gender }}</p>
+        <p>Twitter: {{ form_account_upd.twitter }}</p>
+        <p>Mastodon: {{ form_account_upd.mastodon }}</p>
+        <p>Signal: {{ form_account_upd.signal }}</p>
+        <p>Github: {{ form_account_upd.github }}</p>
+        <p>Telegram: {{ form_account_upd.telegram }}</p>
+        <p>Date of birth: {{ form_account_upd.date_of_birth }}</p>
+        <p>Avatar: {{ form_account_upd.avatar }}</p>
+
+        <button type="submit" name="account-update">Update</button>
+    </form>
+</div>
+<div class="account-social">
+    <a href="/account-social/">API key settings</a>
+</div>
+<div class="delete-account">
+    <a href="/account-delete/">Delete account</a>
+</div>
+{% endblock %}

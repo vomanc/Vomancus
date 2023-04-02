@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block title %} Create Tweet {% endblock %}
+
+{% block content %}
+<div class='create-tweet'>
+    <h1>Form for add</h1>
+    <form id="form-container" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ context.tweet_form.as_p }}
+        {{ context.media_form.management_form }}
+        {% for form in context.media_form %}
+        <div class="media-input-form">
+            <p>{{ form.as_p }}</p>
+        </div>
+        {% if formset.can_delete %}
+        <p>{{ form.DELETE }}</p>
+        {% endif %}
+        {% endfor %}
+        <button id="add-media-form" type="button">More</button>
+        <br>
+        <hr>
+        <button type="submit">Create</button>
+    </form>
+</div>
+{% endblock %}
+{% block scripts %}
+{% load static %}
+<script src="{% static 'add_field.js' %}"></script>
+{% endblock %}

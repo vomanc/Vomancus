@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href={% static 'main.css' %} type="text/css">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <header class="header">
+        <div class="tools-bar">
+            <ul class="tools-bar-list">
+                {% if '/' == request.get_full_path %}
+                <tr><i class="main-tab">Vomanc</tr>
+                {% else %}
+                <a href="{% url 'home' %}"><tr><i class="main_tab">Vomanc</tr></a>
+                {% endif %}
+                {% if '/social-media/' == request.get_full_path %}
+                <tr><i class="main-tab">Socials</tr>
+                {% else %}
+                <a href="{% url 'social-media' %}"><tr><i class="main_tab">Socials</tr></a>
+                {% endif %}
+                {% if '/about/' == request.get_full_path %}
+                <tr><i class="main-tab">About</tr>
+                {% else %}
+                <a href="{% url 'about' %}"><tr><i class="main_tab">About</tr></a>
+                {% endif %}
+            </ul>
+            <div class="account-status">
+            <ul>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'account' user.id %}" class="main_tab">{{ user.username }}</a></li>
+                <li><a href="{% url 'logout_' %}" class="main_tab">Logout</a></li>
+                {% else %}
+                    {% if 'signin' not in request.path %}
+                    <li><a href="{% url 'signin' %}" class="main_tab">Sign in</a></li>
+                    {% else %}
+                    <li><a href="{% url 'signup' %}" class="main_tab">Sign up</a></li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+    {% block content %}{% endblock %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <footer class="footer">
+        <div>
+            <ul>
+                <tr><a href="https://github.com/vomanc">Github</a></tr>
+                <tr><a href="https://twitter.com/vomanc">Twitter</a></tr>
+                <tr><a href="https://infosec.exchange/@vomanc">Mastodon</a></tr>
+            </ul>
+        </div>
+    </footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>

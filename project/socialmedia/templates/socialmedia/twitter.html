@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href={% static 'twitter.css' %} type="text/css">
+{% endblock %}
+{% block title %} Twitter {% endblock %}
+
+{% block content %}
+<h1>Twitter</h1>
+<button type="reset"><a href="{% url 'twitter-update' %}">Update</a></button>
+<button><a href="{% url 'create-tweet' %}">Create</a></button>
+<button><a href="{% url 'twitter-clean' %}">Clean</a></button>
+<br><br>
+<div class="list-of-tweets">
+    {% for tweet in tweets_list %}
+    <div class="tweet">
+        <div onclick="location.href='{% url 'tweet' tweet.id %}'">
+            <div class="tweet-user"><span>{{ tweet.user }}</span><br></div>
+            <div class="tweet-screen_name"><span>{{ tweet.screen_name }}</span></div><br>
+            <span>{{ tweet.tweet_text }}</span><br>
+        </div>
+        {% if tweet.preview != None %}
+        <br>
+        <span><a href="{{ tweet.preview }}">Link</a></span><br>
+        {% endif %}
+        {% for url in tweet.media_url.all%}
+        <br><span><a href="{{ url }}">Media</a></span><br>
+        {% endfor %}
+    </div>
+    <hr>
+    {% empty %}
+    <p>Sorry, no tweets in this list.</p>
+    {% endfor %}
+</div>
+{% include 'main/pagination.html' %}
+{% endblock %}

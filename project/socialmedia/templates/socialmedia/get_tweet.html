@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href={% static 'twitter.css' %} type="text/css">
+{% endblock %}
+{% block title %} Tweet {% endblock %}
+{% block content %}
+
+<div class="one-tweet">
+    <p>{{ tweet.user }}</p>
+    <div class="screen-name">
+        <p>{{ tweet.screen_name }}</p>
+    </div>
+    <span class="twitter-text">{{ tweet.tweet_text }}</span>
+    <div class="translate-block">
+        {% csrf_token %}
+        <div id="open-modal-{{ tweet.id }}"></div>
+        <br>
+        <button id="button-translator" onclick="myTranslate('{{ tweet.tweet_text }}', '{{ tweet.id }}')">Translate</button>
+    </div>
+    <div class="preview-url">
+        {% if tweet.preview is not None %}
+        <p><a href="{{ tweet.preview }}">Link</a></p>
+        {% endif %}
+    </div>
+    <div class="media-url">
+        {% for media in tweet.media_url.all.select_related %}
+         <p><a href="{{ media }}">Media</a></p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'translater.js' %}" type="text/javascript"></script>
+{% endblock %}

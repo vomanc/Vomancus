@@ -1,0 +1,16 @@
+.list-of-tweets, .one-tweet {
+    box-shadow: 0 0 0 2px #492540;
+}
+
+.tweet-screen_name {
+    font-size: 13px;
+    color: #7c73e6;
+}
+
+.tweet-user {
+    color: #fda403;
+}
+
+.translate-text-block {
+    color: #a1dfff;
+}

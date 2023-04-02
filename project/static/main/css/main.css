@@ -1,0 +1,45 @@
+body {
+    background-color: #1d3030;
+    padding: 0 20px 20px 20px;
+    width: 600px;
+    margin: 0 auto;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+html {
+    position: relative;
+    min-height: 80%;
+    width: 80%;
+    height: 100%;
+}
+
+.tools-bar-list {
+    display: inline;
+    font: status-bar;
+    font-size: 25px;
+    color: #ffa41b;
+}
+
+.account-status {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    top: 1%;
+    left: 80%;
+}
+
+.avatar-for-account {
+    max-width: 30%;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    background-color: #492540;
+    line-height: 80px;
+}
+
+.footer a {
+    color: #ffa41b;
+}
