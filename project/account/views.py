@@ -1,4 +1,5 @@
 """ The views modul """
+import smtplib
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -9,7 +10,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.template.loader import render_to_string
-import smtplib
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.views.generic import DeleteView, DetailView
@@ -79,7 +79,7 @@ def send_activation_email(request, user_email):
     send_mail(
         subject=email_subject,
         message=email_message,
-        from_email='mymail@mail.com',
+        from_email='aperna@mail.com',
         recipient_list=[user_email],
     )
     messages.success(request, 'Your email data was successfully updated! \
@@ -195,7 +195,7 @@ class SocialMediaDetailView(LoginRequiredMixin, FormMixin, DetailView):
         return None
 
     def get_context_data(self, **kwargs):
-        context = super(SocialMediaDetailView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['form'] = TwitterAPIForm(instance=self.get_object())
         return context
 
@@ -219,3 +219,4 @@ class SocialMediaDetailView(LoginRequiredMixin, FormMixin, DetailView):
         )
         messages.success(self.request, 'Keys successfully updated')
         return HttpResponseRedirect(self.get_success_url())
+
