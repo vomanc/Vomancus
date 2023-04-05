@@ -2,7 +2,7 @@
 ___
 ## Description
 This Web application and API is designed to interact with other social networks. You can register and add your keys. At the moment, only Twitter API works. The received tweets are stored in the database. There is a translator for tweets. Installed sqlite3 but will have MySQL. Tested on Ubuntu. Coming soon:
-* add Mastadon
+* add Mastodon
 * end-to-end encrypted messages
 * search and follow on twitter
 ___
