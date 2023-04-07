@@ -17,7 +17,7 @@ ___
 If you support the project, there will be more functionality, and I will add: Telegram, Instagram, Discord and Facebook. And if there is enough support, I will launch the site on the server and it will be a full-fledged site.
 ___
 ### Installation method and run
-    git clone https://github.com/vomanc/Vomancus.git
+    git clone https://github.com/vomanc/Vomanc.git
     cd Vomanc
     python3 -m venv env
     source env/bin/activate

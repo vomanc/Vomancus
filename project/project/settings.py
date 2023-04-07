@@ -128,7 +128,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # My settings
+# Cookie
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 86400
+CSRF_COOKIE_HTTPONLY = True
+# Static
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 AUTH_USER_MODEL = 'account.AccountsModel'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/main/media/')
