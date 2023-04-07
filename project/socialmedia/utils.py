@@ -11,8 +11,9 @@ def tweet_parse(api, count, since_id=None):
             # media=True,
             include_entities=True)
     except tweepy.errors.TooManyRequests:
-        print('[-] Rate limit exceeded')
-        return False
+        return None, 'Rate limit exceeded'
+    except tweepy.errors.Unauthorized:
+        return None, 'Invalid API key'
 
     all_tweets = []
     media_list = []

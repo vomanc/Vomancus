@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -91,10 +91,15 @@ def auto_twitter(request):
         return data
 
     if request.method == 'GET':
-        api_keys = get_object_or_404(TwitterAPIModel, owner__id=request.user.id)
-        twitter_list, media_list = twitter_api(api_keys, '200')
-        if twitter_list is False:
-            messages.error(request, 'Rate limit exceeded')
+        api_keys = TwitterAPIModel.objects.filter(owner__id=request.user.id)
+        # if not API Key
+        if api_keys.exists() is False:
+            messages.error(request, 'You need to add an API key')
+            return redirect('social_media-update')
+
+        twitter_list, media_list = twitter_api(api_keys.get(), '200')
+        if twitter_list is None:
+            messages.error(request, media_list)
             return redirect('twitter')
         # Add Tweets
         objs = TwitterModel.objects.bulk_create([
