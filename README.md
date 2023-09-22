@@ -44,10 +44,13 @@ ___
 ___
 ### Donation
 ![Bitcoin](https://www.blockchain.com/explorer/_next/static/media/bitcoin.df7c9480.svg)
-* BTC: bc1qng2azz0el32zqclt6aw5p56fdw2wfxwzvguvuf
+* BTC: bc1q8ymcf78f4qwjlyj9v7q3ujtqm8nm9e3rms3rcq
 
 ![Ethereum](https://www.blockchain.com/explorer/_next/static/media/ethereum.57ab686e.svg)
-* ETH: 0x01cCCEaFDF86114A85cb51a748AfE0f57e78f0cE
+* ETH: 0x015a50222160E7EF9d0ED030BA232025234D0f82
+
+![Tether](https://www.blockchain.com/explorer/_next/static/media/usdt.dd7e4bef.svg)
+* USDT: 0x015a50222160E7EF9d0ED030BA232025234D0f82
 ---
 ![WebMoney](https://wallet.webmoney.ru/touch-icon-ipad-144.png)
 ### WebMoney
